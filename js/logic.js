@@ -1,19 +1,3 @@
-function getItem(key)
-{
-    var r = localStorage.getItem(key);
-
-    return JSON.parse(r);
-}
-
-function setItem(key, value)
-{
-    localStorage.setItem(key, JSON.stringify(value));
-}
-
-function removeItem(key, value)
-{
-    localStorage.removeItem(key, value);
-}
 
 function createGrid(g, h, w) {
     var a = Math.round(w / g);
@@ -203,7 +187,7 @@ function rules(matrix, mKey, id) {
 ///////////////////////// START /////////////////////////////
 /////////////////////////////////////////////////////////////
 
-var c = $('#xxxxxx');
+var c = $('#board');
 
 c.html('');
 removeItem('leftIds');
@@ -217,6 +201,10 @@ var grid = createGrid(g, h, w);
 var html = createHtml(g, grid, h, w);
 
 c.html(html);
+
+// get username
+$('#username').val(getItem('username'));
+$('#myUsername').html(getItem('username'));
 
 $(document).on('mouseover', '.tic-btn', function() {
     var matrix = getArrays($(this), grid);
@@ -265,3 +253,14 @@ $(document).on('click', '.tic-btn', function() {
     setItem('leftIds', leftIds);
 });
 
+// new session
+$(document).on('click', '#newSession', function() {
+	c.html('');
+	removeItem('leftIds');
+	removeItem('newIds');
+	
+	var grid = createGrid(g, h, w);
+	var html = createHtml(g, grid, h, w);
+
+	c.html(html);
+});

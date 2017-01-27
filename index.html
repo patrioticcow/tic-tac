@@ -9,44 +9,17 @@
     <title>Tic Tac Toe</title>
 
     <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	
-	<style>
-		.tic-btn { display : inline-block; font-weight : 400; line-height : 1.25; text-align : center; white-space : nowrap; vertical-align : middle; -webkit-user-select : none; -moz-user-select : none; -ms-user-select : none; user-select : none; -webkit-transition : all .2s ease-in-out; -o-transition : all .2s ease-in-out; transition : all .2s ease-in-out; }
-		.tic-btn:hover { background : rgba(0, 43, 75, 0.40) }
-		.tic-btn-sec { color : #292b2c; background-color : #fff; border-color : #ccc; }
-		.tic-hovered { background-color : rgba(0, 43, 75, 0.10); }
-		.tic-hovered-red { background-color : rgba(255, 0, 0, 0.22); }
-		.fl { float : left; }
-		.db { display : inline; }
-		
-		.text { height: 100%; border: 1px solid #c8c8c8; width: 100%; padding-top: 30%; font-size: 16px; }
-		
-		.pointer { cursor:pointer; }
-		.na { cursor:not-allowed !important; }
-		.redBg { background-color: #ff2121 !important; }
-
-		.whiteBgAnimated {
-			background-color: white !important;
-			background-image: none !important;
-			-webkit-transition: background-color 1000ms linear;
-			-moz-transition: background-color 1000ms linear;
-			-o-transition: background-color 1000ms linear;
-			-ms-transition: background-color 1000ms linear;
-			transition: background-color 1000ms linear;
-			-webkit-animation-direction: alternate;
-			animation-direction: alternate;
-			-webkit-animation-iteration-count: 2;
-			animation-iteration-count: 2;
-		}
-	</style>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
     <div class="container">
-	<br>
-		<div class="row">
-			<div id="xxxxxx" class="pointer" style="width: 721px; height: 556px;"></div>
-		</div>
+		<div id="errorMessage"></div>
+		Let the game begin
+		<br>
+		
+		<button id="fbLogin">Login with facebook</button>
+		<button id="fbLogout">Logout</button>
     </div>
 
     <script src="//vehiclehistory-yzrzbhxxt2s5c.netdna-ssl.com/common/js/jquery-1.11.3.min.js"></script>
@@ -54,6 +27,21 @@
     <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	
-    <script src="/js/logic.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey           : "AIzaSyDSIPXFBGhvzLaRTMLvWu0l-UBqnfL1jRs",
+		authDomain       : "tic-tac-toe-a06cb.firebaseapp.com",
+		databaseURL      : "https://tic-tac-toe-a06cb.firebaseio.com",
+		storageBucket    : "tic-tac-toe-a06cb.appspot.com",
+		messagingSenderId: "248671105051"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	
+    <script src="/js/functions.js"></script>
+    <script src="/js/script.js"></script>
+
   </body>
 </html>
