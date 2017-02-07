@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="921432d5-ebdf-4b19-b2e1-b4c7757f1507" name="m" url="http://162.243.77.227">
+        <fileTransfer host="162.243.77.227" port="22" rootFolder="/usr/share/nginx/html/tictactoe" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
