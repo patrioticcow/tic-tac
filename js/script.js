@@ -23,9 +23,6 @@ if (userId !== null) {
     var userName = getItem('name');
     $('#myUsername').html(userName);
 
-    // database reference
-    var database = firebase.database();
-
     // open status
     openStatus(userId);
 
@@ -33,9 +30,37 @@ if (userId !== null) {
     var status = getItem('status');
     $('#toggle-event').bootstrapToggle(status);
 
-    // look for open games
 
+    // look in the lobby
+    var checkTheLobby = checkTheLobbyPromise(userId);
+    checkTheLobby.then(function (resp) {
+        if (resp !== null) {
+            // check if the partner has left
+            var otherUserId = checkTheLobbyPromise(resp.other_user_id);
+            otherUserId.then(function (other) {
+                console.info('lobby id', resp.other_user_id);
+                console.info('lobby otherId', other.other_user_id);
+            });
+        } else {
+            // look for open games
+            var getOpenUser = getOpenUserPromise(userId);
+            getOpenUser.then(function (id) {
+                console.log('other_user_id', id);
 
+                if (id !== null) {
+                    // remove user from open
+                    firebase.database().ref('open/' + userId).remove();
+                    firebase.database().ref('open/' + id).remove();
+
+                    // move the id to the lobby
+                    firebase.database().ref('lobby/' + userId).set({other_user_id: id});
+                    firebase.database().ref('lobby/' + id).set({other_user_id: userId});
+                } else {
+
+                }
+            });
+        }
+    });
 }
 
 // toggle status
