@@ -63,6 +63,7 @@ if (userId !== null) {
     });
 }
 
+
 // toggle status
 $('#toggle-event').change(function () {
     console.log($(this).prop('checked'));
