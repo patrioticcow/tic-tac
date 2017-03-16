@@ -244,9 +244,18 @@ $(document).on('click', '.tic-btn', function () {
         $('#' + id + ' .text').html('X');
     }
 
-    console.log(id);
-    console.log(mKey);
-    console.log(gameStatus);
+
+    // if there is a game
+    if (gameStatus === 'open') {
+        if (mKey !== null) {
+            console.log(id, mKey);
+        }
+    }
+
+    // else
+    //
+
+    //console.log(gameStatus);
 
     // set new array
     setItem('leftIds', leftIds);

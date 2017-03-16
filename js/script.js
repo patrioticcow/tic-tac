@@ -38,7 +38,9 @@ if (userId !== null) {
             console.log('we have a game');
             console.log({me: userId, opponent: resp.other_user_id});
 
-            setItems({me: userId, opponent: resp.other_user_id});
+            setItems({me: userId, opponent: resp.other_user_id, game_status: 'open'});
+
+            $('#progressBar').hide();
         }
 
         if (resp === null) {
