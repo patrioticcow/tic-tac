@@ -49,12 +49,15 @@ function getOpenUserPromise(userId) {
 }
 
 /**
- * check the lobby
+ * check the room
  * @param userId
+ * @param room
  * @returns {*|{name}}
  */
-function checkTheLobbyPromise(userId) {
-    return firebase.database().ref('/lobby/' + userId).limitToFirst(3).once('value').then(function (snapshot) {
+function checkTheRoomPromise(userId, room) {
+    room = room || 'lobby';
+
+    return firebase.database().ref('/' + room + '/' + userId).limitToFirst(3).once('value').then(function (snapshot) {
         var resp = snapshot.val();
 
         if (resp === null) return null;
